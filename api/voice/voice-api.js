@@ -85,23 +85,23 @@ function warmTransferCall(callId1, callId2, commandId){
     return makeRequest('POST', url, body).then((response) => response.json());
 }
 
-function getCallRecs(organizationId, unifiedUserId, offset = 0, count = 100){
-    const url = `${baseUrl}/voice/v2/organizations/${organizationId}/users/${unifiedUserId}/call-recordings?offset=${offset}&count=${count}`;
+function getCallRecs(unifiedUserId, offset = 0, count = 100){
+    const url = `${baseUrl}/voice/v2/accounts/_me/users/${unifiedUserId}/call-recordings?offset=${offset}&count=${count}`;
     return makeRequest("GET", url).then((response) => response.json());
 }
 
-function getCallRecsArchive(organizationId, unifiedUserId, ids, format = "zip"){
-    const url = `${baseUrl}/voice/v2/organizations/${organizationId}/users/${unifiedUserId}/call-recordings/_selected/_content?format=${format}`;
+function getCallRecsArchive(unifiedUserId, ids, format){
+    const url = `${baseUrl}/voice/v2/accounts/_me/users/${unifiedUserId}/call-recordings/_selected/_content?format=${format}`;
     const body = {
         "ids": ids,
     };
 
-    return makeRequest("POST", url, body).then((response) => response.arrayBuffer());
+    return makeRequest("POST", url, body).then((response) => response.blob());
 }
 
-function getCallRecsContent(organizationId, unifiedUserId, callRecId){
-    const url = `${baseUrl}/voice/v2/organizations/${organizationId}/users/${unifiedUserId}/call-recordings/${callRecId}/_content`;
-    return makeRequest("GET", url).then((response) => response.arrayBuffer());
+function getCallRecsContent(unifiedUserId, callRecId){
+    const url = `${baseUrl}/voice/v2/accounts/_me/users/${unifiedUserId}/call-recordings/${callRecId}/_content`;
+    return makeRequest("GET", url).then((response) => response.blob());
 }
 
 ///////////////////////////////

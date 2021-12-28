@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Voicemail API</title>
+        <link rel='stylesheet' href='../../assets/styles/styles.css'>
+    </head>
+    <body>
+        <div id="nav-bar">
+            <input id="logout" type="button" value="Logout">
+            <a href="../../auth/s2s/api-menu.html"> Back to API menu </a>
+        </div>
+
+        <div>
+            <h2>Call Recordings API</h2>
+
+
+            <div class="content">
+                <div class="block">
+                    <div class="text-info">
+                        Firstly, we need to fill unifiedUserId (it is used for all methods):
+                    </div>
+                    <input id="unified-user-id" type="text" placeholder="unifiedUserId">
+                </div>
+                <div class="block">
+                    <h3>Get Call Recordings</h3>
+                    <div class="text-info">
+                        Then, we need to get call recordings:
+                    </div>
+                    <button id='get-call-recordings'>Get Call Recordings</button>
+                </div>
+                <div class="block">                
+                    <h3>Downloading files as archive</h3>
+                    <div class="text-info">
+                        Now, we can get call recordings archive by specifying the ids from the "Get Call Recordings" response:
+                    </div>
+                    <input id='ids' type="text" placeholder="ids" size="80">
+                    <button id='get-call-recordings-archiuve'>Get call recordings archive</button>
+                </div>
+                <div class="block">
+                    <h3>Downloading single file by file ID</h3>
+                    <div class="text-info">
+                        Also, we can get one call recording content by specifying the id from the "Get Call Recordings" response:
+                    </div>
+                    <input id='call-recording-id' type="text" placeholder="id" size="80">
+                    <button id='get-call-recording-content'>Get call recording content</button>
+                </div>
+            </div>
+            <div>
+                <h3>Output: </h3>
+                <button id='clearLog'>Clear</button>
+                <pre id='out'></pre>
+            </div>
+        </div>
+        <script src='../../assets/log.js'></script>
+        <script src='../../assets/s2s-auth-session-manager.js'></script>
+        <script src='../../assets/make-request-factory.js'></script>
+        <script src='voice-api.js'></script>
+        <script src='assets/call-recordings.js'></script>
+    </body>
+</html>
