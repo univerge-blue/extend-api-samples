@@ -30,7 +30,7 @@ function onGetCallRecordings() {
     });
 }
 
-function onGetCallRecordingsArchive(format = "zip") {
+function onGetCallRecordingsArchive(format = "mp3") {
     let uuid =  document.getElementById("unified-user-id").value;
     let ids = document.getElementById("ids").value.split(/\s*,\s*/);
 
@@ -38,7 +38,7 @@ function onGetCallRecordingsArchive(format = "zip") {
         let dataUrl = window.URL.createObjectURL(response);
         let a = document.createElement('a');
         a.href = dataUrl;
-        a.download = id + "." + format;
+        a.download = ids + ".mp3";
         a.click();
     }).catch((error) => {
         log("Get Call Recordings Archive failed! " + error);
@@ -53,7 +53,7 @@ function onGetCallRecordingContent() {
         let dataUrl = window.URL.createObjectURL(response);
         let a = document.createElement('a');
         a.href = dataUrl;
-        a.download = id + "." + format;
+        a.download = id + ".mp3";
         a.click();
     }).catch((error) => {
         log("Get Call Recording Content failed! " + error);
