@@ -30,15 +30,15 @@ function onGetCallRecordings() {
     });
 }
 
-function onGetCallRecordingsArchive(format = "mp3") {
+function onGetCallRecordingsArchive() {
     let uuid =  document.getElementById("unified-user-id").value;
     let ids = document.getElementById("ids").value.split(/\s*,\s*/);
 
-    getCallRecsArchive(uuid, ids, format).then((response) => {
+    getCallRecsArchive(uuid, ids).then((response) => {
         let dataUrl = window.URL.createObjectURL(response);
         let a = document.createElement('a');
         a.href = dataUrl;
-        a.download = ids + ".mp3";
+        a.download = ids + ".zip";
         a.click();
     }).catch((error) => {
         log("Get Call Recordings Archive failed! " + error);

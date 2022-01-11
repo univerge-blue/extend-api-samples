@@ -90,8 +90,8 @@ function getCallRecs(unifiedUserId, offset = 0, count = 100){
     return makeRequest("GET", url).then((response) => response.json());
 }
 
-function getCallRecsArchive(unifiedUserId, ids, format){
-    const url = `${baseUrl}/voice/v2/accounts/_me/users/${unifiedUserId}/call-recordings/_selected/_content?format=${format}`;
+function getCallRecsArchive(unifiedUserId, ids){
+    const url = `${baseUrl}/voice/v2/accounts/_me/users/${unifiedUserId}/call-recordings/_selected/_content`;
     const body = {
         "ids": ids,
     };
